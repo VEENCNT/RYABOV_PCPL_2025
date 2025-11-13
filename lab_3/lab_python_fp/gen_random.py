@@ -6,4 +6,4 @@ def gen_random(num_count, begin, end):
     return nums  
 
 if __name__ == "__main__":
-    gen_random(5, 1, 3)
+    print(gen_random(5, 1, 3))

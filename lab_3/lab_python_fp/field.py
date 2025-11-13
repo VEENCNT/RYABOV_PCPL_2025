@@ -17,5 +17,5 @@ if __name__ == "__main__":
         {'title': 'Диван для отдыха', 'price': 5300, 'color': 'black'}
     ]
 
-    field(goods, 'title')
-    field(goods, 'title', 'price')
+    print(field(goods, 'title'))
+    print(field(goods, 'title', 'price'))

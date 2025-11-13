@@ -6,7 +6,7 @@ from gen_random import gen_random
 from print_result import print_result
 from cm_timer import cm_timer_1
 
-path = "./data_light.json"
+path = "data_light.json"
 
 with open(path) as f:
     data = json.load(f)
