@@ -47,11 +47,10 @@ def first_task(one_to_many):
 
     result = dict()
 
-    for language in languages:
-        language_libriaries = [libriary_name for libriary_name, _, _ in list(filter(lambda x: x[2] == language.name, one_to_many))]
-
-        if language.name.startswith("J"):
-            result[language.name] = language_libriaries
+    for lang in [lang_obj.name for lang_obj in languages]:
+        libs = [lib_name for lib_name, _, target_lang in one_to_many if target_lang == lang]
+        if lang.startswith("J"):
+            result[lang] = libs
 
     print(result)
 
@@ -60,13 +59,13 @@ def second_task(one_to_many):
 
     result = list()
 
-    for language in languages:
-        language_libriaries = list(filter(lambda x: x[2] == language.name, one_to_many))
-
-        if len(language_libriaries) > 0:
-            result.append((language.name, max(libriary_downloads for _, libriary_downloads, _ in language_libriaries)))
+    for lang in [lang_obj.name for lang_obj in languages]:
+        libs = [(name, downloads) for name, downloads, target_lang in one_to_many if target_lang == lang]
+        if libs:
+            max_downloads = max(downloads for _, downloads in libs)
+            result.append((lang, max_downloads))
         else:
-            result.append((language.name, 0))
+            result.append((lang, 0))
 
     print(sorted(result, key=itemgetter(1), reverse=True))
 
